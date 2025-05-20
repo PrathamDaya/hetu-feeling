@@ -5,22 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hetu's Feelings Portal</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
-    <!-- Floating love emojis -->
-    <div id="floating-emojis"></div>
-
     <div class="container">
         <header>
             <h1>Hi Hetuu, how can I help you?</h1>
         </header>
-        
         <main>
             <section id="page1" class="page active">
-                <div class="option-box grievance" onclick="navigateTo('page2', 'Grievance')">Grievance</div>
-                <div class="option-box appreciate" onclick="navigateTo('page2', 'Appreciate')">Appreciate</div>
-                <div class="option-box sad" onclick="navigateTo('page2', 'Sad')">Sad</div>
-                <div class="option-box happy" onclick="navigateTo('page2', 'Happy')">Happy</div>
+                <div class="option-box grievance" onclick="navigateTo('page2', 'Grievance')">Grievance 😠</div>
+                <div class="option-box appreciate" onclick="navigateTo('page2', 'Appreciate')">Appreciate 🙏</div>
+                <div class="option-box sad" onclick="navigateTo('page2', 'Sad')">Sad 😥</div>
+                <div class="option-box happy" onclick="navigateTo('page2', 'Happy')">Happy 😊</div>
             </section>
 
             <section id="page2" class="page">
@@ -38,178 +35,18 @@
 
             <section id="page3" class="page">
                 <h2>Thank you Hetu!</h2>
-                <div id="animation-container">
-                    <div id="message-box">💖</div>
-                    <div id="mail-icon">✉️</div>
+                <div id="lottie-animation-container">
+                    <lottie-player id="lottie-mail-animation" src="Animation - 1747738746082.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
                 </div>
-                <div id="thank-you-message">
-                    <p>Prath will look at it.</p>
-                </div>
+                <p id="thank-you-message">Prath will solve it.</p>
+                <p id="love-message">I love you my hetuu</p>
                 <button onclick="navigateTo('page1')">Home</button>
             </section>
         </main>
-        
         <footer>
             <p>&copy; 2025 For Hetu with Love</p>
         </footer>
     </div>
-
-    <script>
-        // Store the current feeling type
-        let currentFeeling = '';
-        
-        // Create floating love emojis
-        document.addEventListener('DOMContentLoaded', function() {
-            createFloatingEmojis();
-        });
-
-        function createFloatingEmojis() {
-            const emojis = ['❤️', '💖', '💘', '💝', '💕', '💓', '💗', '💞', '💌', '🌹', '🌸', '🌷', '🥰', '😘', '💑'];
-            const container = document.getElementById('floating-emojis');
-            
-            // Create 20 random emojis
-            for (let i = 0; i < 20; i++) {
-                const emoji = document.createElement('div');
-                emoji.className = 'emoji';
-                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                
-                // Random positions and delays
-                const left = Math.random() * 100;
-                const delay = Math.random() * 15;
-                const duration = 10 + Math.random() * 15;
-                
-                emoji.style.left = `${left}%`;
-                emoji.style.animationDelay = `${delay}s`;
-                emoji.style.animationDuration = `${duration}s`;
-                
-                container.appendChild(emoji);
-            }
-        }
-
-        function navigateTo(pageId, feeling = '') {
-            // If feeling is provided, store it
-            if (feeling) {
-                currentFeeling = feeling;
-                // Update the h2 text based on feeling
-                const headingText = `Please let me know your ${feeling.toLowerCase()} thoughts`;
-                document.querySelector('#page2 h2').textContent = headingText;
-                
-                // Change notebook style based on feeling
-                const notebook = document.querySelector('.notebook');
-                
-                // Remove all feeling classes
-                notebook.classList.remove('grievance-theme', 'appreciate-theme', 'sad-theme', 'happy-theme');
-                
-                // Add the appropriate class
-                notebook.classList.add(`${feeling.toLowerCase()}-theme`);
-            }
-            
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Add sparkle effect to container when changing pages
-            const container = document.querySelector('.container');
-            container.style.animation = 'none';
-            setTimeout(() => {
-                container.style.animation = 'pulse 3s infinite alternate';
-            }, 10);
-        }
-
-        function submitEntry() {
-            const message = document.getElementById('message').value;
-            if (message.trim() === '') {
-                alert('Please write your thoughts first!');
-                return;
-            }
-            
-            // In a real application, you would save this message to a database
-            console.log(`Feeling: ${currentFeeling}, Message: ${message}`);
-            
-            // Update thank you message based on feeling
-            let thankYouText = '';
-            switch(currentFeeling.toLowerCase()) {
-                case 'grievance':
-                    thankYouText = "I'm sorry you feel this way. Prath will address this soon.";
-                    break;
-                case 'appreciate':
-                    thankYouText = "Thank you for your kind words! Prath will be delighted.";
-                    break;
-                case 'sad':
-                    thankYouText = "Sending virtual hugs! Prath will reach out to you.";
-                    break;
-                case 'happy':
-                    thankYouText = "Your happiness makes us happy too! Prath will celebrate with you.";
-                    break;
-                default:
-                    thankYouText = "Prath will look at it.";
-            }
-            
-            document.querySelector('#thank-you-message p').textContent = thankYouText;
-            
-            // Add heart particles effect
-            createHeartParticles();
-            
-            // Clear the textarea
-            document.getElementById('message').value = '';
-            
-            // Navigate to thank you page
-            navigateTo('page3');
-        }
-        
-        function createHeartParticles() {
-            const container = document.querySelector('.container');
-            
-            // Choose emojis based on feeling
-            let emojis;
-            switch(currentFeeling.toLowerCase()) {
-                case 'grievance':
-                    emojis = ['🙏', '✋', '🤝', '👍', '⚖️'];
-                    break;
-                case 'appreciate':
-                    emojis = ['💖', '🙏', '👏', '💯', '🌟'];
-                    break;
-                case 'sad':
-                    emojis = ['💙', '🫂', '🌧️', '🌈', '☔'];
-                    break;
-                case 'happy':
-                    emojis = ['🎉', '🥳', '✨', '💖', '😊'];
-                    break;
-                default:
-                    emojis = ['❤️', '💖', '💘', '💝', '💕'];
-            }
-            
-            for (let i = 0; i < 15; i++) {
-                const heart = document.createElement('div');
-                heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-                heart.style.position = 'absolute';
-                heart.style.fontSize = `${Math.random() * 1 + 0.5}em`;
-                heart.style.left = `${Math.random() * 100}%`;
-                heart.style.top = `${Math.random() * 100}%`;
-                heart.style.opacity = '1';
-                heart.style.zIndex = '100';
-                heart.style.pointerEvents = 'none';
-                
-                container.appendChild(heart);
-                
-                // Animate heart
-                const animation = heart.animate([
-                    { transform: 'translateY(0) scale(1)', opacity: 1 },
-                    { transform: `translateY(-${Math.random() * 100 + 50}px) scale(0)`, opacity: 0 }
-                ], {
-                    duration: Math.random() * 1000 + 1000,
-                    easing: 'ease-out'
-                });
-                
-                animation.onfinish = () => {
-                    heart.remove();
-                };
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
