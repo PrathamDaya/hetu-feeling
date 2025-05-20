@@ -1,4 +1,4 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbw7oS_ffRr5Qj9HiMzTzeLnirrlF-6yWgmIBpQmFZp5YoyR_u4-VuEs5uKcIrIHmadiIQ/exec'; // Replace with your Google Apps Script Web App URL
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzH4whliZSRjcTeoA_8UQAzM9OmtNohfqiQKmeoJZWXa_xQOHg_e11bTRavjcjZqtzn/exec'; // Replace with your Google Apps Script Web App URL
 const pages = document.querySelectorAll('.page');
 let currentEmotion = '';
 
