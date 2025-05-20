@@ -1,7 +1,7 @@
 body {
     font-family: sans-serif;
     margin: 0;
-    background-color: #ffe6f0; /* Light pink background */
+    background-color: #e0f7fa; /* Updated: Light blue background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-    background-color: #ffb3d9; /* Medium pink container */
+    background-color: #bbdefb; /* Updated: Medium blue container */
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
@@ -19,7 +19,7 @@ body {
 }
 
 header h1 {
-    color: #8c004b; /* Dark pink header text */
+    color: #0d47a1; /* Dark blue header text for blue theme */
     margin-bottom: 20px;
 }
 
@@ -39,7 +39,7 @@ header h1 {
 }
 
 .option-box {
-    background-color: #ff69b4; /* Hot pink boxes */
+    background-color: #42a5f5; /* Blue boxes */
     color: white;
     padding: 20px;
     border-radius: 10px;
@@ -57,7 +57,7 @@ header h1 {
 
 /* Page 2 Styles */
 #page2 h2 {
-    color: #8c004b;
+    color: #0d47a1;
     margin-bottom: 15px;
 }
 
@@ -85,7 +85,7 @@ header h1 {
 .ribbon {
     width: 60px;
     height: 20px;
-    background-color: #e6007e; /* Magenta ribbon */
+    background-color: #1976d2; /* Darker blue ribbon */
     position: absolute;
 }
 
@@ -104,7 +104,7 @@ header h1 {
 .heart {
     font-size: 1.5em;
     position: absolute;
-    color: #ff1493; /* Deep pink heart */
+    color: #ef5350; /* Red heart, contrasting with blue */
 }
 
 .heart.top-right {
@@ -118,7 +118,7 @@ header h1 {
 }
 
 #page2 button {
-    background-color: #ff69b4;
+    background-color: #42a5f5;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -130,12 +130,12 @@ header h1 {
 }
 
 #page2 button:hover {
-    background-color: #e6007e;
+    background-color: #1976d2;
 }
 
 /* Page 3 Styles */
 #page3 h2 {
-    color: #8c004b;
+    color: #0d47a1;
     margin-bottom: 15px;
 }
 
@@ -175,12 +175,12 @@ header h1 {
 }
 
 #thank-you-message {
-    color: #8c004b;
+    color: #0d47a1;
     margin-top: 20px;
 }
 
 #page3 button {
-    background-color: #ff69b4;
+    background-color: #42a5f5;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -192,7 +192,7 @@ header h1 {
 }
 
 #page3 button:hover {
-    background-color: #e6007e;
+    background-color: #1976d2;
 }
 
 @keyframes foldSend {
@@ -201,22 +201,22 @@ header h1 {
         opacity: 1;
     }
     50% {
-        transform: rotateX(90deg) translateY(-20px);
-        opacity: 0.7;
+        transform: rotateX(180deg) translateY(-50px); /* More dramatic fold, move higher */
+        opacity: 0.5;
     }
     100% {
-        transform: rotateX(0deg) translateY(50px) scale(0.5);
+        transform: rotateX(0deg) translateY(100px) scale(0.3); /* Move further down, smaller */
         opacity: 0;
     }
 }
 
 @keyframes slideMail {
     0% {
-        transform: translateX(0);
+        transform: translateX(-100px); /* Start further left */
         opacity: 0;
     }
-    50% {
-        opacity: 0.5;
+    30% { /* Appear earlier */
+        opacity: 0.8;
     }
     100% {
         transform: translateX(50px);
@@ -227,7 +227,7 @@ header h1 {
 /* Footer Styles */
 footer {
     margin-top: 20px;
-    color: #8c004b;
+    color: #0d47a1;
     font-size: 0.8em;
 }
 
