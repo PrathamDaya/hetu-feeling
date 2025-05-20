@@ -1,1 +1,327 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    /* This line from the original code for background color */
+    background-color: #ffe6f0; /* Light pink background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 
+    /* New: For animated background with bunnies/rabbits */
+    /* If you want the animated background, uncomment these lines
+    background-image: url('pink-pattern.png'); /* Make sure 'pink-pattern.png' is in the same directory */
+    /* background-size: cover; */
+    /* animation: moveBackground 20s linear infinite; */
+    */
+}
+
+.container {
+    background-color: #ffb3d9; /* Medium pink container */
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    position: relative; /* Needed for floating emojis if uncommented */
+}
+
+/* New: For floating emojis if uncommented */
+/*
+.floating-emoji {
+    position: absolute;
+    font-size: 2em;
+    opacity: 0.7;
+    animation: floatEmoji 5s linear infinite alternate;
+}
+
+.bunny-emoji {
+    top: 10%;
+    left: 15%;
+}
+
+.rabbit-emoji {
+    bottom: 15%;
+    right: 10%;
+}
+*/
+
+header h1 {
+    color: #8c004b; /* Dark pink header text */
+    margin-bottom: 20px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Page 1 Styles */
+#page1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.option-box {
+    background-color: #ff69b4; /* Hot pink boxes */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.option-box:hover {
+    transform: scale(1.05);
+}
+
+/* Page 2 Styles */
+#page2 h2 {
+    color: #8c004b;
+    margin-bottom: 15px;
+}
+
+.notebook {
+    position: relative;
+    background-color: #f8f8f8;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.notebook textarea {
+    width: calc(100% - 40px);
+    height: 150px;
+    padding: 10px;
+    border: none;
+    box-sizing: border-box;
+    font-family: cursive;
+    font-size: 1em;
+    outline: none;
+    background-color: #f8f8f8;
+}
+
+.ribbon {
+    width: 60px;
+    height: 20px;
+    background-color: #e6007e; /* Magenta ribbon */
+    position: absolute;
+}
+
+.ribbon.top-left {
+    top: -10px;
+    left: 10px;
+    transform: rotate(-45deg);
+}
+
+.ribbon.bottom-right {
+    bottom: -10px;
+    right: 10px;
+    transform: rotate(45deg);
+}
+
+.heart {
+    font-size: 1.5em;
+    position: absolute;
+    color: #ff1493; /* Deep pink heart */
+}
+
+.heart.top-right {
+    top: 10px;
+    right: 10px;
+}
+
+.heart.bottom-left {
+    bottom: 10px;
+    left: 10px;
+}
+
+#page2 button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#page2 button:hover {
+    background-color: #e6007e;
+}
+
+/* Page 3 Styles - UPDATED FOR NEW ANIMATION */
+#page3 h2 {
+    color: #8c004b;
+    margin-bottom: 15px;
+}
+
+#animation-container {
+    position: relative;
+    width: 150px; /* Original width */
+    height: 100px; /* Original height */
+    margin: 20px auto;
+    overflow: hidden; /* Important to hide message box as it slides out */
+}
+
+#message-box {
+    width: 80px; /* Original width */
+    height: 50px; /* Original height */
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: absolute;
+    top: 20px; /* Adjusted position for the slide */
+    left: 20px; /* Starting position */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+    font-family: cursive;
+    color: #333;
+    animation: slideOutRight 0.8s forwards; /* NEW ANIMATION */
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#mail-icon {
+    font-size: 2.5em; /* Larger size for prominence */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    opacity: 0; /* Starts hidden */
+    animation: bounceIn 1s forwards 0.7s; /* NEW ANIMATION with delay */
+}
+
+#thank-you-message {
+    color: #8c004b;
+    margin-top: 20px;
+}
+
+#page3 button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+#page3 button:hover {
+    background-color: #e6007e;
+}
+
+/* Original keyframes - DEACTIVATED/REPLACED by new ones below */
+/*
+@keyframes foldSend {
+    0% {
+        transform: rotateX(0deg) translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: rotateX(90deg) translateY(-20px);
+        opacity: 0.7;
+    }
+    100% {
+        transform: rotateX(0deg) translateY(50px) scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes slideMail {
+    0% {
+        transform: translateX(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(50px);
+        opacity: 1;
+    }
+}
+*/
+
+/* Footer Styles */
+footer {
+    margin-top: 20px;
+    color: #8c004b;
+    font-size: 0.8em;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    #page1 {
+        grid-template-columns: 1fr;
+    }
+
+    .option-box {
+        margin-bottom: 15px;
+    }
+}
+
+/* NEW ANIMATION KEYFRAMES FOR PAGE 3 */
+
+/* Background animation (if you choose to activate it in body) */
+@keyframes moveBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+
+/* Floating emoji animation (if you choose to activate it in HTML and CSS) */
+@keyframes floatEmoji {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-20px) rotate(360deg); }
+}
+
+/* Message box slides right and disappears */
+@keyframes slideOutRight {
+    0% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(150px) scale(0.5); /* Slides out of view to the right */
+        opacity: 0;
+    }
+}
+
+/* Mail icon appears with a bounce */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(50px) scale(0.5);
+    }
+    60% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-10px) scale(1.1); /* Bounce up */
+    }
+    80% {
+        transform: translateX(-50%) translateY(5px) scale(0.9); /* Bounce down a bit */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1); /* Settle */
+    }
+}
