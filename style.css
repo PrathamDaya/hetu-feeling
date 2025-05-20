@@ -1,1 +1,546 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #ffe6f0; /* Light pink background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    animation: gradientBackground 15s ease infinite;
+    background: linear-gradient(45deg, #ffe6f0, #ffb3d9, #ff99cc, #ff80bf, #ff69b4);
+    background-size: 400% 400%;
+}
 
+/* Floating hearts and flowers background */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M10 18c-0.6 0-1.1-0.2-1.5-0.6L2.8 11.7c-1.9-1.9-1.9-5 0-6.9 0.9-0.9 2.1-1.4 3.4-1.4s2.5 0.5 3.4 1.4L10 5.1l0.4-0.4c0.9-0.9 2.1-1.4 3.4-1.4s2.5 0.5 3.4 1.4c1.9 1.9 1.9 5 0 6.9l-5.7 5.7c-0.4 0.4-0.9 0.6-1.5 0.6z' fill='rgba(255,105,180,0.3)'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Ccircle cx='15' cy='15' r='7' fill='rgba(255,105,180,0.2)'/%3E%3Cpath d='M15 8C15 8 13 3 8 3C3 3 1 8 1 8C1 8 3 13 8 13C13 13 15 8 15 8ZM15 8C15 8 17 3 22 3C27 3 29 8 29 8C29 8 27 13 22 13C17 13 15 8 15 8ZM15 22C15 22 13 27 8 27C3 27 1 22 1 22C1 22 3 17 8 17C13 17 15 22 15 22ZM15 22C15 22 17 27 22 27C27 27 29 22 29 22C29 22 27 17 22 17C17 17 15 22 15 22Z' fill='rgba(255,105,180,0.2)'/%3E%3C/svg%3E");
+    opacity: 0.5;
+    z-index: -1;
+    animation: animateBackground 60s linear infinite;
+}
+
+/* Animated gradient background */
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes animateBackground {
+    from { background-position: 0 0; }
+    to { background-position: 100% 100%; }
+}
+
+/* Floating emojis */
+.emoji {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: floatEmoji 15s linear infinite;
+    opacity: 0.7;
+    z-index: -1;
+}
+
+@keyframes floatEmoji {
+    0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) translateX(100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+#floating-emojis {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    background-color: rgba(255, 179, 217, 0.8); /* Semi-transparent medium pink container */
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(140, 0, 75, 0.3);
+    padding: 30px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    animation: pulse 3s infinite alternate;
+}
+
+/* Subtle pulsing container */
+@keyframes pulse {
+    0% { box-shadow: 0 0 20px rgba(140, 0, 75, 0.3); }
+    100% { box-shadow: 0 0 30px rgba(140, 0, 75, 0.6); }
+}
+
+/* Add a nice border decoration */
+.container::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff69b4, #e6007e, #ff1493, #ff69b4);
+    z-index: -1;
+    border-radius: 17px;
+    background-size: 400% 400%;
+    animation: borderGradient 3s ease infinite;
+}
+
+@keyframes borderGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header h1 {
+    color: #8c004b; /* Dark pink header text */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px rgba(255, 105, 180, 0.5); }
+    to { text-shadow: 0 0 15px rgba(255, 105, 180, 0.8), 0 0 20px rgba(255, 20, 147, 0.5); }
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Page 1 Styles */
+#page1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.option-box {
+    background-color: rgba(255, 105, 180, 0.8); /* Semi-transparent hot pink boxes */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(140, 0, 75, 0.2);
+}
+
+.option-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(140, 0, 75, 0.3);
+}
+
+/* Specific feeling styles */
+.option-box.grievance {
+    background-color: rgba(255, 99, 71, 0.8); /* Tomato red */
+}
+
+.option-box.appreciate {
+    background-color: rgba(147, 112, 219, 0.8); /* Medium purple */
+}
+
+.option-box.sad {
+    background-color: rgba(70, 130, 180, 0.8); /* Steel blue */
+}
+
+.option-box.happy {
+    background-color: rgba(255, 215, 0, 0.8); /* Gold */
+}
+
+/* Ripple effect for option boxes */
+.option-box::after {
+    content: "";
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+    animation: ripple 1.5s ease-out infinite;
+}
+
+@keyframes ripple {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(3); opacity: 0; }
+}
+
+/* Page 2 Styles */
+#page2 h2 {
+    color: #8c004b;
+    margin-bottom: 15px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.notebook {
+    position: relative;
+    background-color: rgba(248, 248, 248, 0.9);
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.notebook:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Notebook themes based on feeling */
+.notebook.grievance-theme {
+    background-color: rgba(255, 240, 240, 0.9);
+    border-color: #ffcccc;
+}
+
+.notebook.appreciate-theme {
+    background-color: rgba(240, 240, 255, 0.9);
+    border-color: #ccccff;
+}
+
+.notebook.sad-theme {
+    background-color: rgba(230, 240, 255, 0.9);
+    border-color: #ccddff;
+}
+
+.notebook.happy-theme {
+    background-color: rgba(255, 255, 240, 0.9);
+    border-color: #ffffcc;
+}
+
+.notebook textarea {
+    width: calc(100% - 40px);
+    height: 150px;
+    padding: 10px;
+    border: none;
+    box-sizing: border-box;
+    font-family: cursive;
+    font-size: 1em;
+    outline: none;
+    background-color: transparent;
+    background-image: linear-gradient(transparent, transparent 19px, #ddd 19px, #ddd 20px);
+    background-size: 100% 20px;
+    line-height: 20px;
+    resize: none;
+}
+
+.ribbon {
+    width: 60px;
+    height: 20px;
+    background-color: #e6007e; /* Magenta ribbon */
+    position: absolute;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation: ribbonGlow 2s infinite alternate;
+}
+
+@keyframes ribbonGlow {
+    from { box-shadow: 0 0 5px rgba(230, 0, 126, 0.5); }
+    to { box-shadow: 0 0 15px rgba(230, 0, 126, 0.8); }
+}
+
+.ribbon.top-left {
+    top: -10px;
+    left: 10px;
+    transform: rotate(-45deg);
+}
+
+.ribbon.bottom-right {
+    bottom: -10px;
+    right: 10px;
+    transform: rotate(45deg);
+}
+
+.heart {
+    font-size: 1.5em;
+    position: absolute;
+    color: #ff1493; /* Deep pink heart */
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.heart.top-right {
+    top: 10px;
+    right: 10px;
+}
+
+.heart.bottom-left {
+    bottom: 10px;
+    left: 10px;
+}
+
+#page2 button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+#page2 button:hover {
+    background-color: #e6007e;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#page2 button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Button shine effect */
+#page2 button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { left: -50%; }
+    100% { left: 150%; }
+}
+
+/* Page 3 Styles */
+#page3 h2 {
+    color: #8c004b;
+    margin-bottom: 15px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+#animation-container {
+    position: relative;
+    width: 150px;
+    height: 100px;
+    margin: 20px auto;
+}
+
+#message-box {
+    width: 80px;
+    height: 50px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+    font-family: cursive;
+    color: #333;
+    animation: foldSend 2s forwards;
+    transform-origin: top center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#message-box::before {
+    content: "❤️";
+    position: absolute;
+    font-size: 1.2em;
+    opacity: 0;
+    animation: messageHearts 2s 0.5s forwards;
+}
+
+@keyframes messageHearts {
+    0% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0; transform: scale(0) translateY(-20px); }
+}
+
+#mail-icon {
+    font-size: 2em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    animation: slideMail 2s forwards, mailGlow 1.5s infinite alternate;
+    opacity: 0;
+}
+
+@keyframes mailGlow {
+    from { text-shadow: 0 0 5px rgba(255, 20, 147, 0.5); }
+    to { text-shadow: 0 0 15px rgba(255, 20, 147, 0.8); }
+}
+
+#thank-you-message {
+    color: #8c004b;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeInMessage 1s 2s forwards;
+}
+
+@keyframes fadeInMessage {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#page3 button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+#page3 button:hover {
+    background-color: #e6007e;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#page3 button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Button shine effect */
+#page3 button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes foldSend {
+    0% {
+        transform: rotateX(0deg) translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: rotateX(90deg) translateY(-20px);
+        opacity: 0.7;
+    }
+    100% {
+        transform: rotateX(0deg) translateY(50px) scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes slideMail {
+    0% {
+        transform: translateX(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(50px);
+        opacity: 1;
+    }
+}
+
+/* Footer Styles */
+footer {
+    margin-top: 20px;
+    color: #8c004b;
+    font-size: 0.8em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+footer::before {
+    content: "❤️";
+    font-size: 1.2em;
+    position: absolute;
+    left: -20px;
+    animation: pulse 1s infinite alternate;
+}
+
+footer::after {
+    content: "❤️";
+    font-size: 1.2em;
+    position: absolute;
+    right: -20px;
+    animation: pulse 1s infinite alternate;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    #page1 {
+        grid-template-columns: 1fr;
+    }
+
+    .option-box {
+        margin-bottom: 15px;
+    }
+}
